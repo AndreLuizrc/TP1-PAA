@@ -8,9 +8,9 @@ int main() {
     cv::Mat img = cv::imread("ferrari1.png");
     cv::Mat img2 = cv::imread("ferrari2.png");
 
-    cv:: Mat imgVetorized = vectorization(img);
-    cv:: Mat imgVetorized2 = vectorization(img2);
+    ImageVectorData imgVetorized = vectorization(img, "ferrari1.png");
+    ImageVectorData imgVetorized2 = vectorization(img2, "ferrari2.png");
 
-    cout << cosineSimilarity(imgVetorized, imgVetorized2);
+    cout << "Similarity between " << imgVetorized.name << " and " << imgVetorized2.name << ": " << cosineSimilarity(imgVetorized.vector, imgVetorized2.vector) << endl;
     return 0;
 }

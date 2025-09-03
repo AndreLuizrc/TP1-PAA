@@ -1,8 +1,8 @@
-#include <opencv2/opencv.hpp>
+#include "image_vectorization.h" // Include the new header
 #include <iostream>
 
 // Converte uma imagem em um vetor de características HOG normalizado (float, 1xN)
-cv::Mat vectorization(const cv::Mat &imgBgr)
+ImageVectorData vectorization(const cv::Mat &imgBgr, const std::string& imageName)
 {
     // Pré-processamento: cinza + redimensiona para tamanho fixo (HOG precisa de tamanho consistente)
     cv::Mat imgGray;
@@ -26,7 +26,11 @@ cv::Mat vectorization(const cv::Mat &imgBgr)
     cv::Mat vec(vectorDesc, true); // coluna Nx1
     vec = vec.reshape(1, 1);       // 1xN
     cv::normalize(vec, vec, 1.0, 0.0, cv::NORM_L2);
-    return vec;
+
+    ImageVectorData data;
+    data.vector = vec;
+    data.name = imageName;
+    return data;
 }
 
 // Similaridade do cosseno entre dois vetores 1xN
