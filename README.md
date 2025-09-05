@@ -239,7 +239,7 @@ make -C build
 ## 👨‍💻 Autores
 
 * André Luiz Rocha Cabral
-*
+* Juan Pablo Ramos de Oliveira
 *
 *
 *
